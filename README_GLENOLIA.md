@@ -11,6 +11,8 @@ This is a separate research application. It does not alter or host
 actual link, form, mobile and backend checks must be carried out separately.
 The included Codex skill is our custom Glenolia workflow adapter, not a skill
 provided by the upstream MiroFish project. Upstream AGPL-3.0 licensing remains.
+The inherited star-history job and container-publishing job are guarded for the
+upstream repository only; this Glenolia test fork does not run those jobs.
 
 ## What is ready
 

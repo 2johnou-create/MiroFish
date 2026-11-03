@@ -20,6 +20,7 @@ permissions:
 
 jobs:
   build-and-push:
+    if: ${{ github.repository == '666ghj/MiroFish' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
