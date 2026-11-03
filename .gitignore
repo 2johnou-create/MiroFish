@@ -58,3 +58,9 @@ backend/uploads/
 
 # Docker 数据
 data/
+
+# Glenolia local study configuration, isolated tools and results
+private.env
+.glenolia-tools/
+.glenolia-runtime/
+glenolia-results/
