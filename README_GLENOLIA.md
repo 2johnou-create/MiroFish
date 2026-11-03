@@ -36,6 +36,57 @@ study allowance/budget. This does not imply the providers are free. Upstream
 graph extraction, agent setup, rounds, reports and retries can all consume quota.
 Do not create accounts, accept terms or buy upgrades as part of a preflight.
 
+## First-time owner setup
+
+The app is installed locally. You only need to prepare two provider accounts
+and save their keys in the private local file. No account, payment or provider
+connection has been completed for you by this setup.
+
+1. **OpenAI API:** open the [OpenAI Platform dashboard](https://platform.openai.com/).
+   Sign in or create your owner account, review its terms and any billing/payment
+   steps yourself, then create or select a project named **GlenoliaWebsiteResearch**.
+   Create a project API key yourself and save it locally. OpenAI's official
+   instructions explain dashboard key creation and keeping the key private.
+   [Official OpenAI quickstart](https://developers.openai.com/api/docs/quickstart?site_locale=en).
+2. **Zep Cloud:** open the [Zep dashboard](https://app.getzep.com/), create your
+   owner account, review the terms and actual plan/allowance, and create a project
+   named **GlenoliaWebsiteResearch**. Create its API key yourself. Do not assume
+   a free allowance, guaranteed credits or a fixed run price.
+   [Official Zep key and SDK setup](https://help.getzep.com/v3/install-sdks).
+3. **Save locally:** open `private.env` in this checkout on your own computer.
+   Paste the OpenAI key only after `LLM_API_KEY=` and the Zep key only after
+   `ZEP_API_KEY=`. Set the OpenAI endpoint below. Keep the generated `SECRET_KEY`
+   unchanged and leave `LLM_MODEL_NAME` blank until we check the account's current
+   models and this pinned app's compatibility. Do not put keys in chat, GitHub,
+   an uploaded seed document or the public `.example` file.
+
+```dotenv
+LLM_API_KEY=
+LLM_BASE_URL=https://api.openai.com/v1
+LLM_MODEL_NAME=
+ZEP_API_KEY=
+```
+
+The empty fields above are intentional; they contain no example credential or
+chosen model. A model listed in a current quickstart is not automatically
+compatible with this older CAMEL/OASIS integration. We have not selected or
+tested a model, and the local launcher stays blocked while that field is empty.
+
+There is also a **Zep version check to complete**: the installed, locked
+`zep-cloud==3.25.0` client uses `https://api.getzep.com/api/v2`, while Zep's
+documentation now identifies v4 as its default. Key/account compatibility is
+unverified. Keep the lockfile unchanged until an authorised connection check;
+do not blindly upgrade the SDK or treat a saved key as proof of a working
+connection. [Zep's versioned setup documentation](https://help.getzep.com/v3/install-sdks).
+
+When the keys are saved, tell Codex **“The accounts and local keys are ready;
+prepare the connection check.”** Give an amount **and currency** you are willing
+to spend on the initial compatibility check before any chargeable request.
+Review each provider's actual allowance and billing controls. We can then check
+authentication and select a compatible model within that permission. A connection
+check does not authorise a full audience simulation; agree its separate budget
+and small study settings first. No paid request starts automatically.
+
 ## Install on another machine
 
 Use a Node release supported by the locked Vite version (Node 20.19+ or 22.12+)
