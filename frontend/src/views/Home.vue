@@ -61,20 +61,20 @@
             <span class="status-dot">■</span> {{ $t('home.systemStatus') }}
           </div>
           
-          <h2 class="section-title">{{ $t('home.systemReady') }}</h2>
+          <h2 class="section-title">{{ isGlenoliaLocal ? 'Local sandbox' : $t('home.systemReady') }}</h2>
           <p class="section-desc">
-            {{ $t('home.systemReadyDesc') }}
+            {{ isGlenoliaLocal ? 'Complete the provider setup and run the setup check before starting a simulation.' : $t('home.systemReadyDesc') }}
           </p>
           
           <!-- 数据指标卡片 -->
           <div class="metrics-row">
             <div class="metric-card">
-              <div class="metric-value">{{ $t('home.metricLowCost') }}</div>
-              <div class="metric-label">{{ $t('home.metricLowCostDesc') }}</div>
+              <div class="metric-value">{{ isGlenoliaLocal ? 'Usage varies' : $t('home.metricLowCost') }}</div>
+              <div class="metric-label">{{ isGlenoliaLocal ? 'Check provider pricing and allowance.' : $t('home.metricLowCostDesc') }}</div>
             </div>
             <div class="metric-card">
-              <div class="metric-value">{{ $t('home.metricHighAvail') }}</div>
-              <div class="metric-label">{{ $t('home.metricHighAvailDesc') }}</div>
+              <div class="metric-value">{{ isGlenoliaLocal ? 'Setup check' : $t('home.metricHighAvail') }}</div>
+              <div class="metric-label">{{ isGlenoliaLocal ? 'Readiness is not verified by this preview.' : $t('home.metricHighAvailDesc') }}</div>
             </div>
           </div>
 
@@ -218,6 +218,7 @@ import HistoryDatabase from '../components/HistoryDatabase.vue'
 import LanguageSwitcher from '../components/LanguageSwitcher.vue'
 
 const router = useRouter()
+const isGlenoliaLocal = import.meta.env.VITE_GLENOLIA_LOCAL === '1'
 
 // 表单数据
 const formData = ref({

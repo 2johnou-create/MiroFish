@@ -3,6 +3,7 @@ import upstream from './vite.config.js'
 
 // Explicit local-only profile. The upstream default remains available separately.
 export default mergeConfig(upstream, defineConfig({
+  define: { 'import.meta.env.VITE_GLENOLIA_LOCAL': JSON.stringify('1') },
   server: {
     host: '127.0.0.1',
     port: 3300,

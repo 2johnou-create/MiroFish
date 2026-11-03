@@ -20,6 +20,8 @@ provided by the upstream MiroFish project. Upstream AGPL-3.0 licensing remains.
   **127.0.0.1:5501** for the API, with debug off and an English default. A stored
   language choice is respected. It refuses occupied ports instead of stopping
   another process. No public hosting or automatic launch is configured.
+- The local home panel says Local sandbox, asks for a setup check and gives no
+  fixed simulation-price estimate. It is not a provider-readiness indicator.
 - The private config is separate from parent `.env` files and unrelated inherited
   credentials. The local backend rejects remote browser origins/rebound hosts.
 - `glenolia-study/` contains a public-only fact seed, an adult audience study and
@@ -98,7 +100,7 @@ simulation. Those actions need a confirmed owner budget and study first.
 ```sh
 node --test scripts/glenolia.test.mjs
 backend/.venv/bin/python scripts/test_glenolia_backend.py
-VITE_DEFAULT_LOCALE=en VITE_API_BASE_URL=/ npm --prefix frontend run build
+VITE_DEFAULT_LOCALE=en VITE_API_BASE_URL=/ npm --prefix frontend run build -- --config vite.glenolia.config.js
 node scripts/glenolia-public-status.mjs
 ```
 

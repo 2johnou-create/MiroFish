@@ -54,6 +54,7 @@ export function runtimeEnv(config = {}, parent = process.env) {
   env.FLASK_DEBUG = 'False'
   env.VITE_API_BASE_URL = '/'
   env.VITE_DEFAULT_LOCALE = 'en'
+  env.VITE_GLENOLIA_LOCAL = '1'
   return env
 }
 
